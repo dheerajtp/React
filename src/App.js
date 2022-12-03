@@ -1,53 +1,24 @@
 import "./App.css";
-import Excercise from "./Excercise";
+import styles from "./style.module.css";
+import User from "./User";
 
 function App() {
-  const name = "Name goes here";
-  const tag = <p>An example for p tag</p>;
-  const fullName = <h1>Name</h1>;
-  const age = <h2>25</h2>;
-  const email = <h5>dheerajtp6338@gmail.com</h5>;
+  const age = 18,
+    isGreen = true,
+    names = [
+      { name: "Kannan", age: 25, display: true },
+      { name: "Kunjan", age: 25, display: false },
+    ];
 
-  const userFullDetails = (
-    <div>
-      {fullName}
-      {age}
-      {email}
-    </div>
-  );
   return (
     <div className="App">
-      {name}
-      {tag}
-      {userFullDetails}
-      {userFullDetails}
-      <p>Component goes below</p>
-      <User />
-      <User />
-      <PropComponent name="prop-name" age={18} email="propemail@hi2.in" />
-      <Excercise />
+      <h1 className={styles.header}>{age > 15 ? "Over Age" : "Under Age"}</h1>
+      {isGreen && <button>Shows only if isGreen is true</button>}
+      {names.map((user, key) => (
+        <User key={key} user={user} />
+      ))}
     </div>
   );
 }
-
-const User = () => {
-  return (
-    <div>
-      <h1> Name : Name</h1>
-      <h2> Age : 25 </h2>
-      <h4> Email : email@hi2.in </h4>
-    </div>
-  );
-};
-
-const PropComponent = (props) => {
-  return (
-    <div>
-      <h1>{props.name}</h1>
-      <h2>{props.age}</h2>
-      <h3>{props.email}</h3>
-    </div>
-  );
-};
 
 export default App;
