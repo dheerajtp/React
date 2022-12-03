@@ -1,22 +1,15 @@
 import "./App.css";
-import styles from "./style.module.css";
-import User from "./User";
+import { useState } from "react";
 
 function App() {
-  const age = 18,
-    isGreen = true,
-    names = [
-      { name: "Kannan", age: 25, display: true },
-      { name: "Kunjan", age: 25, display: false },
-    ];
-
+  let [age, setAge] = useState(0);
+  const increaseAge = () => {
+    setAge(age + 1);
+  };
   return (
     <div className="App">
-      <h1 className={styles.header}>{age > 15 ? "Over Age" : "Under Age"}</h1>
-      {isGreen && <button>Shows only if isGreen is true</button>}
-      {names.map((user, key) => (
-        <User key={key} user={user} />
-      ))}
+      <h1>Age:{age}</h1>
+      <button onClick={increaseAge}>Increase</button>
     </div>
   );
 }
