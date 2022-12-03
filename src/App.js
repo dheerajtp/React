@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Text from "./Text";
+import Axios from "axios";
 
 function App() {
-  const [showText, setShowText] = useState(false);
+  let [data, setData] = useState({});
 
+  let fetchData = async () => {
+    try {
+      let data = await Axios.get(`https://catfact.ninja/fact`);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    console.log("use effect call only once");
-    return () => {
-      console.log("un mounting");
-    };
+    fetchData();
   }, []);
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          setShowText(!showText);
-        }}
-      >
-        Toggle Show Text
-      </button>
-      {showText && <Text />}
+      <button onClick={fetchData}>Generate A Fact</button>
+      <p>{data?.fact}</p>
     </div>
   );
 }
