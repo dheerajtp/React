@@ -1,12 +1,13 @@
 import "./App.css";
-import { useToggle } from "./useToggle";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Cat from "./components/Cat";
 function App() {
-  const [isInvisible, toggle] = useToggle();
+  const client = new QueryClient();
   return (
     <div className="App">
-      <button onClick={toggle}>{isInvisible ? "Hide" : "Show"}</button>
-      {isInvisible && <h1>Hidden text goes here</h1>}
+      <QueryClientProvider client={client}>
+        <Cat />
+      </QueryClientProvider>
     </div>
   );
 }
