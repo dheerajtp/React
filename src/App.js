@@ -1,9 +1,15 @@
 import "./App.css";
-import Count from "./Count";
+import Person from "./Person";
 function App() {
   return (
     <div className="App">
-      <Count />
+      <Person
+        name={10}
+        age={15}
+        email="email@hi2.in"
+        mobile="number"
+        friends={["kannan", "kannan2"]}
+      />
     </div>
   );
 }
