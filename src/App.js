@@ -1,13 +1,9 @@
 import "./App.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Cat from "./components/Cat";
+import Count from "./Count";
 function App() {
-  const client = new QueryClient();
   return (
     <div className="App">
-      <QueryClientProvider client={client}>
-        <Cat />
-      </QueryClientProvider>
+      <Count />
     </div>
   );
 }
